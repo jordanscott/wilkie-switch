@@ -1,2 +1,2 @@
-# homebridge-wilkie-switch
+# wilkie-switch
 PoolControlTest

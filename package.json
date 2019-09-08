@@ -1,8 +1,10 @@
 {
-  "name": "homebridge-wilkie-switch",
+  "name": "wilkie-switch",
   "version": "0.0.1",
-  "description": "Pool Control Test for: https://github.com/nfarina/homebridge",
-  "license": "ISC",
+  "description": "Pool Control Test using homebridge to connect to the Intellicenter API",
+  "main": "index.js",
+  "author": "Hannes Ljungberg",
+  "license": "MIT",
   "keywords": [
     "homebridge-plugin"
   ],
@@ -14,8 +16,8 @@
     "url": "http://github.com/jordanscott/wilkie-switch/issues"
   },
   "engines": {
-    "node": ">=0.12.0",
-    "homebridge": ">=0.2.0"
+    "homebridge": ">=0.4.0",
+    "node": ">=8.6.0"
   },
   "dependencies": {}
 }
