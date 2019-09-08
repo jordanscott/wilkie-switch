@@ -11,8 +11,7 @@ module.exports = function (homebridge) {
 
 
 
-mySwitch.prototype = {
-  getServices: function () {
+mySwitch.prototype.getServices = function () {
     let informationService = new Service.AccessoryInformation();
     informationService
       .setCharacteristic(Characteristic.Manufacturer, "Jordan Scott")
@@ -29,7 +28,7 @@ mySwitch.prototype = {
     this.switchService = switchService;
     return [informationService, switchService];
   }
-}
+
 
 
 
