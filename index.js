@@ -11,7 +11,8 @@ module.exports = function (homebridge) {
 
 
 
-mySwitch.prototype.getServices = function () {
+mySwitch.prototype = {
+  getServices: function () {
     let informationService = new Service.AccessoryInformation();
     informationService
       .setCharacteristic(Characteristic.Manufacturer, "Jordan Scott")
@@ -28,7 +29,7 @@ mySwitch.prototype.getServices = function () {
     this.switchService = switchService;
     return [informationService, switchService];
   }
-
+}
 
 
 
@@ -112,6 +113,23 @@ mySwitch.prototype = {
       }
       return next();
     });
+  },
+  getServices: function () {
+    let informationService = new Service.AccessoryInformation();
+    informationService
+      .setCharacteristic(Characteristic.Manufacturer, "Jordan Scott")
+      .setCharacteristic(Characteristic.Model, "1o2h3f4u5c6k7y8e9a0h")
+      .setCharacteristic(Characteristic.SerialNumber, "123-456-789");
+
+    let switchService = new Service.Switch("Wilkie Switch");
+    switchService
+      .getCharacteristic(Characteristic.On)
+      .on('get', this.getSwitchOnCharacteristic.bind(this))
+      .on('set', this.setSwitchOnCharacteristic.bind(this));
+
+    this.informationService = informationService;
+    this.switchService = switchService;
+    return [informationService, switchService];
   }
 };
 
