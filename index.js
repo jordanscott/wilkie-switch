@@ -1,24 +1,13 @@
-
-// First, we need to inject our plugin within homebridge.
-// mySwitch is the javascript object that will contain our control logic.
-
-const Service, Characteristic
+var Service, Characteristic;
 
 module.exports = function (homebridge) {
   Service = homebridge.hap.Service;
   Characteristic = homebridge.hap.Characteristic;
-  homebridge.registerAccessory("wilkie-switch", "PoolControlTest", mySwitch);
+  homebridge.registerAccessory("homebridge-wilkie-switch", "PoolControlTest", mySwitch);
 };
 
 
-// We need to instanciate :
-// an AccessoryInformation service containing:
-//// a Manufacturer characteristic
-//// a Model characteristic
-//// a SerialNumber characteristic
-// a Switch service containing:
-//// an On characteristic – the only required characteristic of this service
-// Unlike AccessoryInformation service’s characteristics, which are readable and can be set at plugin initialization, the On characteristic is writable and require a getter and setter.
+
 
 mySwitch.prototype = {
   getServices: function () {
@@ -41,12 +30,6 @@ mySwitch.prototype = {
 };
 
 
-// We will now write the logic of On characteristic getter and setter within dedicated prototype function of mySwitch object.
-// We will make the following assumption regarding the RESTful API offered by the switch :
-//// GET requests on http://192.168.0.10/api/status returns a { currentState: } reflecting the switch current state
-//// POST requests on http://192.168.0.10/api/order sending a { targetState: } reflecting desired target state set the switch state
-// We will use request and url modules to perform our HTTP requests.
-// Our configuration object, defined within Homebridge global configuration JSON, will contain both URLs described above.
 
 const request = require('request');
 const url = require('url');
