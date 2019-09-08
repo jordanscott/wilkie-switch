@@ -1,6 +1,6 @@
 
 {
-  "name": "wilkie-switch",
+  "name": "homebridge-wilkie-switch",
   "version": "0.0.1",
   "description": "Pool Control Test for: https://github.com/nfarina/homebridge",
   "license": "ISC",
