@@ -29,7 +29,7 @@ mySwitch.prototype = {
     this.switchService = switchService;
     return [informationService, switchService];
   }
-};
+}
 
 
 
