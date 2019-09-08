@@ -2,12 +2,12 @@
 // First, we need to inject our plugin within homebridge.
 // mySwitch is the javascript object that will contain our control logic.
 
-const Service, Characteristic;
+const Service, Characteristic
 
 module.exports = function (homebridge) {
   Service = homebridge.hap.Service;
   Characteristic = homebridge.hap.Characteristic;
-  homebridge.registerAccessory("homebridge-wilkie-switch", "PoolControlTest", mySwitch);
+  homebridge.registerAccessory("wilkie-switch", "PoolControlTest", mySwitch);
 };
 
 
@@ -86,15 +86,15 @@ mySwitch.prototype = {
     const me = this;
     request({
       url: me.postUrl,
+      method: 'POST',
+      headers: {'Content-type': 'application/json'},
       body: {
       	command:"SETPARAMLIST",
     	messageID:"d391695b-b754-40dd-95f1-6fdff5582aa1",
     	objectList:[{
     		objnam:"C0002",
     		params:{STATUS:"ON"}}]
-      },
-      method: 'POST',
-      headers: {'Content-type': 'application/json'}
+      }
     },
     function (error, response) {
       if (error) {
@@ -110,15 +110,15 @@ mySwitch.prototype = {
     const me = this;
     request({
       url: me.postUrl,
+      method: 'POST',
+      headers: {'Content-type': 'application/json'},
       body: {
       	command:"SETPARAMLIST",
     	messageID:"d391695b-b754-40dd-95f1-6fdff5582aa1",
     	objectList:[{
     		objnam:"C0002",
     		params:{STATUS:"OFF"}}]
-      },
-      method: 'POST',
-      headers: {'Content-type': 'application/json'}
+      }
     },
     function (error, response) {
       if (error) {
